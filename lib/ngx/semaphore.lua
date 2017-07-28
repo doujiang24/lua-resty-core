@@ -79,7 +79,7 @@ function _M.wait(self, seconds)
         return error("not a semaphore instance")
     end
 
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end

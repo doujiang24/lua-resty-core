@@ -26,7 +26,7 @@ local FFI_DONE = base.FFI_DONE
 ngx.exit = function (rc)
     local err = get_string_buf(ERR_BUF_SIZE)
     local errlen = get_size_ptr()
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if r == nil then
         return error("no request found")
     end

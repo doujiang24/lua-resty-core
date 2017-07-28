@@ -99,7 +99,7 @@ end
 
 
 function _M.get_sys_filter_level()
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     return tonumber(C.ngx_http_lua_ffi_errlog_get_sys_filter_level(r))
 end
 

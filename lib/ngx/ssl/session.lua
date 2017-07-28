@@ -37,7 +37,7 @@ local _M = { version = base.version }
 
 -- return session, err
 function _M.get_serialized_session()
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end
@@ -65,7 +65,7 @@ end
 
 -- return session_id, err
 function _M.get_session_id()
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end
@@ -90,7 +90,7 @@ end
 
 -- return ok, err
 function _M.set_serialized_session(sess)
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end

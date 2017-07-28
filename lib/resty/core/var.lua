@@ -34,7 +34,7 @@ local errmsg = base.get_errmsg_ptr()
 
 
 local function var_get(self, name)
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end
@@ -74,7 +74,7 @@ end
 
 
 local function var_set(self, name, value)
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
     if not r then
         return error("no request found")
     end

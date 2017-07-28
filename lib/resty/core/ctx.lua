@@ -31,7 +31,7 @@ local _M = {
 
 
 local function get_ctx_table()
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
 
     if not r then
         return error("no request found")
@@ -57,7 +57,7 @@ register_getter("ctx", get_ctx_table)
 
 
 local function set_ctx_table(ctx)
-    local r = getfenv(0).__ngx_req
+    local r = ngx._get_req()
 
     if not r then
         return error("no request found")
