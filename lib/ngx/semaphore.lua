@@ -79,7 +79,7 @@ function _M.wait(self, seconds)
         return error("not a semaphore instance")
     end
 
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end

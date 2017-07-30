@@ -122,7 +122,7 @@ end
 
 
 function _M.set_ocsp_status_resp(ocsp_resp)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end

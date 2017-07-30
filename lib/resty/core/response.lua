@@ -41,7 +41,7 @@ ffi.cdef[[
 
 
 local function set_resp_header(tb, key, value)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -108,7 +108,7 @@ end
 
 
 local function get_resp_header(tb, key)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end

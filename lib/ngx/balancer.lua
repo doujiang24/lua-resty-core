@@ -44,7 +44,7 @@ local _M = { version = base.version }
 
 
 function _M.set_current_peer(addr, port)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -66,7 +66,7 @@ end
 
 
 function _M.set_more_tries(count)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -84,7 +84,7 @@ end
 
 
 function _M.get_last_failure()
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -106,7 +106,7 @@ end
 
 
 function _M.set_timeouts(connect_timeout, send_timeout, read_timeout)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end

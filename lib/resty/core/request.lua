@@ -71,7 +71,7 @@ local req_headers_mt = {
 
 
 function ngx.req.get_headers(max_headers, raw)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -133,7 +133,7 @@ end
 
 
 function ngx.req.get_uri_args(max_args)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -190,7 +190,7 @@ end
 
 
 function ngx.req.start_time()
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -219,7 +219,7 @@ do
     }
 
     function ngx.req.get_method()
-        local r = ngx._get_req()
+        local r = getexdata()
         if not r then
             return error("no request found")
         end
@@ -251,7 +251,7 @@ end  -- do
 
 
 function ngx.req.set_method(method)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
@@ -285,7 +285,7 @@ do
             return orig_func(name, value)
         end
 
-        local r = ngx._get_req()
+        local r = getexdata()
         if not r then
             return error("no request found")
         end
@@ -322,7 +322,7 @@ end  -- do
 
 
 function ngx.req.clear_header(name)
-    local r = ngx._get_req()
+    local r = getexdata()
     if not r then
         return error("no request found")
     end
